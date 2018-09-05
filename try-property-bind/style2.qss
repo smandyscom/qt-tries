@@ -1,0 +1,7 @@
+*[flip="true"] > QPushButton{
+        background-color: #396B79;
+}
+
+*[flip="true"] > QPushButton{
+        background-color: ##FFFFFF;
+}

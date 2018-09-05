@@ -40,4 +40,5 @@ RESOURCES += \
     resource.qrc
 
 DISTFILES += \
-    style.qss
+    style.qss \
+    style2.qss

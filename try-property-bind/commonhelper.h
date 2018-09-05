@@ -5,7 +5,7 @@
 #include <QFile>
 #include <QDir>
 #include <QApplication>
-
+#include <QWidget>
 #include <QDebug>
 
 class CommonHelper : public QObject
@@ -19,6 +19,13 @@ public:
             qDebug() << QDir::currentPath();
             qss.open(QFile::ReadOnly);
             qApp->setStyleSheet(qss.readAll());
+            qss.close();
+        }
+    static void setStyle(const QString &style,QWidget* target) {
+            QFile qss(style);
+            qDebug() << QDir::currentPath();
+            qss.open(QFile::ReadOnly);
+            target->setStyleSheet(qss.readAll());
             qss.close();
         }
 signals:

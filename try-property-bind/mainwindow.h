@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <source.h>
-
+#include <commonhelper.h>
 
 namespace Ui {
 class MainWindow;
