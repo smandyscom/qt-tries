@@ -1,0 +1,39 @@
+/*
+
+*{
+    border : solid 2px red;
+    font : 16px;
+
+}
+
+* .QPushButton
+{
+    background-color : red;
+    border-radius: 10px;
+    color : white;
+}
+
+.QLabel
+{
+    background-color : green;
+}
+
+/** .QWidget[prop="true"] .QPushButton
+{
+    color : yellow;
+}
+
+* .QWidget[prop="false"] .QPushButton
+{
+    color : cyan;
+}*/
+
+QWidget#widget[enabled="true"] .QPushButton
+{
+    color : blue;
+}
+
+QWidget#widget[enabled="false"] .QPushButton
+{
+    color : red;
+}
