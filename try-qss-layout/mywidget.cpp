@@ -17,6 +17,14 @@ mywidget::~mywidget()
 
 bool mywidget::event(QEvent* event)
 {
+    switch(event->type())
+    {
+        case QEvent::DynamicPropertyChange:
+        break;
+    default:
+        break;
+    }
+
     //! Should polish specific widget
     //style()->unpolish(ui->pushButton);
     style()->polish(ui->pushButton);
