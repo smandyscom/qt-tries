@@ -1,18 +1,21 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-09-01T22:56:11
+# Project created by QtCreator 2018-09-18T15:06:25
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += testlib
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       -= gui
 
-TARGET = try-property-bind
+TARGET = tst_testclass
+CONFIG   += console
+CONFIG   -= app_bundle
+
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
-# any feature of Qt which has been marked as deprecated (the exact warnings
+# any feature of Qt which as been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
@@ -24,22 +27,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
-        source.cpp \
-    commonhelper.cpp
+        tst_testclass.cpp \ 
+    base.cpp \
+    derived.cpp
+
+DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 HEADERS += \
-        mainwindow.h \
-        source.h \
-    commonhelper.h
-
-FORMS += mainwindow.ui
-
-RESOURCES += \
-    resource.qrc
-
-DISTFILES += \
-    style.qss \
-    style2.qss \
-    style3.qss
+    base.h \
+    derived.h

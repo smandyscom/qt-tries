@@ -14,7 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(this,SIGNAL(valueChanged(int)),ui->lcdNumber_3,SLOT(display(int)));
 
-    CommonHelper::setStyle("/Users/Apple/Github/qt-tries/try-property-bind/style2.qss",this);
+//    CommonHelper::setStyle("/Users/Apple/Github/qt-tries/try-property-bind/style2.qss",this);
+    CommonHelper::setStyle("../try-property-bind/style2.qss",this);
+
     qDebug() << this->styleSheet();
 }
 
@@ -29,14 +31,14 @@ void MainWindow::on_pushButton_clicked()
 
     this->centralWidget()->setProperty("flip",QVariant::fromValue(!this->centralWidget()->property("flip").toBool())); //possible use hierarachy to update
 
-        this->style()->unpolish(this); //valid
-        this->style()->polish(this);
+//        this->style()->unpolish(this); //valid
+//        this->style()->polish(this);
 
 //    this->style()->unpolish(qApp); //valid
 //    this->style()->polish(qApp);
 
 
-//    ui->pushButton->style()->unpolish(ui->pushButton); //need to update specific widget
-//    ui->pushButton->style()->polish(ui->pushButton);
+    ui->pushButton->style()->unpolish(ui->pushButton); //need to update specific widget
+    ui->pushButton->style()->polish(ui->pushButton);
 
 }
