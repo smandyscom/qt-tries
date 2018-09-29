@@ -26,6 +26,7 @@ public:
             qDebug() << QDir::currentPath();
             qss.open(QFile::ReadOnly);
             target->setStyleSheet(qss.readAll());
+            qDebug() << target->styleSheet();
             qss.close();
         }
 signals:

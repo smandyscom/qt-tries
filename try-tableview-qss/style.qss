@@ -1,0 +1,38 @@
+*
+{
+    border : solid black 10px;
+    font-size : 36px;
+}
+
+QPushButton
+{
+    background-color: #d7d6d5
+}
+
+QPushButton { background-color: red; border: none; }
+
+QTableView {
+    selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,
+                                stop: 0 #FF92BB, stop: 1 white);
+/*    alternate-background-color: blue;*/
+/*    outline-color : blue;*/
+    gridline-color : blue;
+}
+
+QTableView QTableCornerButton::section {
+    background: red;
+    border: 2px outset red;
+}
+
+.QAbstractItemView::text
+{
+    font-size : 36px;
+}
+
+/*key move*/
+/*would select single cell with alternate state*/
+QAbstractItemView::item:alternate
+{
+    background: #FFB934;
+}
+
