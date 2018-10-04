@@ -8,6 +8,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     CommonHelper::setStyle("style.qss",this);
 
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(":memory:");
+    if(!db.open())
+        qDebug() << "faile";
+    QSqlQuery query;
+       query.exec("create table person (id int primary key, "
+                  "firstname varchar(20), lastname varchar(20))");
+       query.exec("insert into person values(101, 'Danny', 'Young')");
+       query.exec("insert into person values(102, 'Christine', 'Holand')");
+       query.exec("insert into person values(103, 'Lars', 'Gordon')");
+       query.exec("insert into person values(104, 'Roberto', 'Robitaille')");
+       query.exec("insert into person values(105, 'Maria', 'Papadopoulos')");
+
+    QSqlTableModel* memory = new enhancedTableModel();
+    memory->setTable("person");
+    memory->select();
+
     timer = new QTimer(this);
     connect(timer,&QTimer::timeout,this,&MainWindow::onTimeout);
     timer->start(1000);
@@ -22,6 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //! [1] //! [2]
     }
 
+    model = memory;
 
     ui->tableView->setModel(model);
     ui->tableView->setItemDelegate(new MyDelegate(ui->tableView));
@@ -44,7 +62,9 @@ void MainWindow::onTimeout()
     QModelIndex index = model->index(qrand() % model->rowCount(),
                                      qrand() % model->columnCount());
 
-    model->setData(index,
+    bool result = model->setData(index,
                    !index.data(Qt::UserRole).toBool(),
                    Qt::UserRole); //use UserRole to transmit On/Off state
+
+    ui->statusBar->showMessage(QString(result));
 }

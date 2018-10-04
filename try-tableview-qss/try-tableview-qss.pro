@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     ../try-property-bind/commonhelper.cpp \
-    mydelegate.cpp
+    mydelegate.cpp \
+    enhancedtablemodel.cpp
 
 HEADERS += \
         mainwindow.h \
     ../try-property-bind/commonhelper.h \
-    mydelegate.h
+    mydelegate.h \
+    enhancedtablemodel.h
 
 FORMS += \
         mainwindow.ui

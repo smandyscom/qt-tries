@@ -37,3 +37,50 @@ model->setData(index,
                    !index.data(Qt::UserRole).toBool(),
                    Qt::UserRole); //use UserRole to transmit On/Off state
 ```
+
+- - -
+
+### Note that, not all QAbstractItemModel implemented UserRole , i.e QSqlTableModel
+
+#### Implementing QSqlTableModel with UserRole data
+
+* sub-class QSqlTableModel , i.e EntenedSqlTableModel
+* create storage for UserRole inside EntenedSqlTableModel
+```cpp
+QVector<QVector<bool>> m_userRole;
+``` 
+* overriden select() , setData() , data()
+```cpp
+bool EntenedSqlTableModel::select()
+{
+    QSqlTableModel::select();
+    //! claim storage
+    for(int rowIndex = 0;rowIndex < rowCount();rowIndex++)
+    {
+        m_monitorRole.append(QVector<bool>(columnCount()));
+    }
+}
+
+bool EntenedSqlTableModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    //! Intercept UserRole and handling
+    if(role==Qt::UserRole)
+    {
+        m_monitorRole[index.row()][index.column()] = value.toBool();
+        //! emit signal to inform view re-paint
+        emit dataChanged(index,index);
+        return true;
+    }
+
+   return QSqlTableModel::setData(index,value,role);
+}
+
+QVariant EntenedSqlTableModel::data(const QModelIndex &index, int role ) const
+{
+    if(role==Qt::UserRole)
+    {
+        return m_monitorRole[index.row()][index.column()];
+    }
+    return QSqlTableModel::data(index,role);
+}
+```
