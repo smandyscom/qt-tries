@@ -11,6 +11,10 @@ class MyObject : public QObject
 public:
     explicit MyObject(QObject *parent = nullptr);
 
+    QObject* receiver;
+
+    bool event(QEvent *event) Q_DECL_OVERRIDE;
+
 signals:
     void inform();
 protected slots:
