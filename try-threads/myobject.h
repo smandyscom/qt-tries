@@ -5,6 +5,9 @@
 #include <QTimer>
 #include <QThread>
 
+//!
+//! \brief The MyObject class
+//! Best practice : use signal/slot with connect to perform cross-thread communication
 class MyObject : public QObject
 {
     Q_OBJECT
