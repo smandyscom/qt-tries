@@ -44,7 +44,7 @@ void MainWindow::onTimeout()
     QModelIndex index = model->index(qrand() % model->rowCount(),
                                      qrand() % model->columnCount());
 
-    model->setData(index,
+   bool result = model->setData(index,
                    !index.data(Qt::UserRole).toBool(),
                    Qt::UserRole); //use UserRole to transmit On/Off state
 }
