@@ -3,9 +3,12 @@
 
 #include <QMainWindow>
 #include <QStandardItemModel>
+#include <QSqlTableModel>
+#include <QSqlQuery>
 #include <commonhelper.h>
 #include <mydelegate.h>
 #include <QTimer>
+#include <enhancedtablemodel.h>
 
 namespace Ui {
 class MainWindow;
@@ -25,7 +28,7 @@ protected slots:
     void onTimeout();
 private:
     Ui::MainWindow *ui;
-    QStandardItemModel* model;
+    QAbstractItemModel* model;
 
     QTimer* timer;
 };
