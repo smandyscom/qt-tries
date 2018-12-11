@@ -21,18 +21,20 @@ void MyObject::onTimeout()
 
 void MyObject::onInform()
 {
-    qDebug() << QString("%1,inform").arg(sender()->thread()->objectName());
+    qDebug() << QString("sender thread %1,inform, on thread %2")
+                .arg(sender()->thread()->objectName())
+                .arg(thread()->objectName());
 }
 
-bool MyObject::event(QEvent *event)
-{
-    switch (event->type()) {
-    case QEvent::DynamicPropertyChange:
-        qDebug() << QString("%1,property change").arg(property("thread").toString());
-        break;
-    default:
-        break;
-    }
+//bool MyObject::event(QEvent *event)
+//{
+//    switch (event->type()) {
+//    case QEvent::DynamicPropertyChange:
+//        qDebug() << QString("%1,property change").arg(property("thread").toString());
+//        break;
+//    default:
+//        break;
+//    }
 
-    return QObject::event(event);
-}
+//    return QObject::event(event);
+//}

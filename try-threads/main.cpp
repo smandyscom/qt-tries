@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     QThread* thread = new QThread();
-    thread->setObjectName("myThread");
+    thread->setObjectName("worker");
 
     MyInitiator* initiator = new MyInitiator();
 
@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
         initiator->Interconnect();
     });
 
+    a.thread()->setObjectName("main");
 
     thread->start();
     return a.exec();

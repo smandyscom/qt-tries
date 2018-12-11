@@ -14,9 +14,9 @@ class MyObject : public QObject
 public:
     explicit MyObject(QObject *parent = nullptr);
 
-    QObject* receiver;
+//    QObject* receiver;
 
-    bool event(QEvent *event) Q_DECL_OVERRIDE;
+//    bool event(QEvent *event) Q_DECL_OVERRIDE;
 
 signals:
     void inform();
